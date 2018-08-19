@@ -9,7 +9,7 @@ namespace CrossSolar.Repository
 
         IQueryable<T> Query();
 
-        Task InsertAsync(T entity);
+        Task<int> InsertAsync(T entity);
 
         Task UpdateAsync(T entity);
     }
