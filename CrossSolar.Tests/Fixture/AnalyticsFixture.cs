@@ -18,10 +18,10 @@ namespace CrossSolar.Tests.Fixture
 
         public AnalyticsFixture()
         {
-            string panelId = "1";
+            int panelId = 1;
             Panel panel = new Panel()
             {
-                Id = Int32.Parse(panelId),
+                Id = panelId,
                 Brand = "Areva",
                 Latitude = 12.345678,
                 Longitude = 98.7655432,
@@ -44,7 +44,7 @@ namespace CrossSolar.Tests.Fixture
             Panel = panel;
         }
 
-        public List<OneHourElectricity> MockOneHourEletricityData(string panelId)
+        public List<OneHourElectricity> MockOneHourEletricityData(int panelId)
         {
             List<OneHourElectricity> oneHourElectricities = new List<OneHourElectricity>();
             Random random = new Random();

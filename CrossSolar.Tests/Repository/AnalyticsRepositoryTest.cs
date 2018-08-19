@@ -24,7 +24,7 @@ namespace CrossSolar.Tests.Repository
         [Fact]
         public async void GetDayAnalyticsAsync_ShouldReturnOnlyDayData()
         {
-            string panelId = "1";
+            int panelId = 1;
             var dayAnalytics = _fixture.MockOneHourEletricityData(panelId).AsQueryable();
 
             var mockSet = new Mock<DbSet<OneHourElectricity>>();

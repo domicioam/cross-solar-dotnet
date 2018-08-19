@@ -33,7 +33,7 @@ namespace CrossSolar.Tests.Controller
             };
 
             // Act
-            var result = await _analyticsController.Post(_fixture.Panel.Id.ToString(), oneHourElectricity);
+            var result = await _analyticsController.Post(_fixture.Panel.Id, oneHourElectricity);
 
             // Assert
             Assert.NotNull(result);
@@ -47,7 +47,7 @@ namespace CrossSolar.Tests.Controller
         public async Task DayResults_ShouldReturnDayAnalytics()
         {
             // Arrange
-            string panelId = _fixture.Panel.Id.ToString();
+            int panelId = _fixture.Panel.Id;
 
             // Act
             var result = await _analyticsController.DayResults(panelId);

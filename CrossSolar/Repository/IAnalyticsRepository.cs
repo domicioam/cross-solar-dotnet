@@ -6,6 +6,6 @@ namespace CrossSolar.Repository
 {
     public interface IAnalyticsRepository : IGenericRepository<OneHourElectricity>
     {
-        Task<IEnumerable<OneHourElectricity>> GetDayAnalyticsAsync(string panelId);
+        Task<IEnumerable<OneHourElectricity>> GetDayAnalyticsAsync(int panelId);
     }
 }

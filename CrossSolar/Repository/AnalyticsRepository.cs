@@ -11,7 +11,7 @@ namespace CrossSolar.Repository
         public AnalyticsRepository(CrossSolarDbContext dbContext) : base(dbContext)
         { }
 
-        public async Task<IEnumerable<OneHourElectricity>> GetDayAnalyticsAsync(string panelId)
+        public async Task<IEnumerable<OneHourElectricity>> GetDayAnalyticsAsync(int panelId)
         {
             var task = Task.Run(() =>
             {

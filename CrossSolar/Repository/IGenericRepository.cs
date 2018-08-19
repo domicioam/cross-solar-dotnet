@@ -5,7 +5,7 @@ namespace CrossSolar.Repository
 {
     public interface IGenericRepository<T>
     {
-        Task<T> GetAsync(string id);
+        Task<T> GetAsync(int id);
 
         IQueryable<T> Query();
 
