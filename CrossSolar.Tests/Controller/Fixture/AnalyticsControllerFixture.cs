@@ -44,7 +44,7 @@ namespace CrossSolar.Tests.Controller.Fixture
             Panel = panel;
         }
 
-        private static List<OneHourElectricity> MockOneHourEletricityData(string panelId)
+        public List<OneHourElectricity> MockOneHourEletricityData(string panelId)
         {
             List<OneHourElectricity> oneHourElectricities = new List<OneHourElectricity>();
             Random random = new Random();
