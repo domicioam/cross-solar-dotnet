@@ -8,6 +8,11 @@ namespace CrossSolar.Repository
     public abstract class GenericRepository<T> : IGenericRepository<T>
         where T : class, new()
     {
+        public GenericRepository(CrossSolarDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
         protected CrossSolarDbContext _dbContext { get; set; }
 
         public async Task<T> GetAsync(string id)

@@ -12,7 +12,7 @@ namespace CrossSolar.Domain
         {
         }
 
-        public DbSet<Panel> Panels { get; set; }
+        public virtual DbSet<Panel> Panels { get; set; }
 
         public DbSet<OneHourElectricity> OneHourElectricitys { get; set; }
 
