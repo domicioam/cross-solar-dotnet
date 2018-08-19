@@ -14,7 +14,7 @@ namespace CrossSolar.Domain
 
         public virtual DbSet<Panel> Panels { get; set; }
 
-        public DbSet<OneHourElectricity> OneHourElectricitys { get; set; }
+        public virtual DbSet<OneHourElectricity> OneHourElectricitys { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

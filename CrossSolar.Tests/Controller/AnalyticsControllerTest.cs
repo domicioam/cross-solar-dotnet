@@ -42,5 +42,22 @@ namespace CrossSolar.Tests.Controller
             Assert.NotNull(createdResult);
             Assert.Equal(201, createdResult.StatusCode);
         }
+
+        [Fact]
+        public async Task DayResults_ShouldReturnDayAnalytics()
+        {
+            // Arrange
+            string panelId = _fixture.Panel.Id.ToString();
+
+            // Act
+            var result = await _analyticsController.DayResults(panelId);
+
+            // Assert
+            Assert.NotNull(result);
+
+            var okResult = result as OkObjectResult;
+            Assert.NotNull(okResult);
+            Assert.Equal(200, okResult.StatusCode);
+        }
     }
 }

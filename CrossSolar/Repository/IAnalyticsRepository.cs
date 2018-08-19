@@ -1,8 +1,11 @@
 ﻿using CrossSolar.Domain;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CrossSolar.Repository
 {
     public interface IAnalyticsRepository : IGenericRepository<OneHourElectricity>
     {
+        Task<IEnumerable<OneHourElectricity>> GetDayAnalyticsAsync(string panelId);
     }
 }

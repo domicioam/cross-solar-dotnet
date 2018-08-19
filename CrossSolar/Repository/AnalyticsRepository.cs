@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using CrossSolar.Domain;
 
 namespace CrossSolar.Repository
@@ -6,5 +10,15 @@ namespace CrossSolar.Repository
     {
         public AnalyticsRepository(CrossSolarDbContext dbContext) : base(dbContext)
         { }
+
+        public async Task<IEnumerable<OneHourElectricity>> GetDayAnalyticsAsync(string panelId)
+        {
+            var task = Task.Run(() =>
+            {
+                return Query().Where(o => o.PanelId == panelId && o.DateTime == DateTime.Now).AsEnumerable();
+            });
+
+            return await task;
+        }
     }
 }

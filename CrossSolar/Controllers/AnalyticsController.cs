@@ -52,7 +52,22 @@ namespace CrossSolar.Controllers
         [HttpGet("{panelId}/[controller]/day")]
         public async Task<IActionResult> DayResults([FromRoute] string panelId)
         {
-            var result = new List<OneDayElectricityModel>();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var analytics = await _analyticsRepository.GetDayAnalyticsAsync(panelId);
+
+            var result = new OneHourElectricityListModel
+            {
+                OneHourElectricitys = analytics.Select(c => new OneHourElectricityModel
+                {
+                    Id = c.Id,
+                    KiloWatt = c.KiloWatt,
+                    DateTime = c.DateTime
+                })
+            };
 
             return Ok(result);
         }
