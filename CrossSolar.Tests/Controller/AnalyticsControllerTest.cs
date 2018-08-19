@@ -6,20 +6,20 @@ using System.Collections.Generic;
 
 using CrossSolar.Models;
 using CrossSolar.Controllers;
-using CrossSolar.Tests.Controller.Fixture;
+using CrossSolar.Tests.Fixture;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CrossSolar.Tests.Controller
 {
-    public class AnalyticsControllerTest : IClassFixture<AnalyticsControllerFixture>
+    public class AnalyticsControllerTest : IClassFixture<AnalyticsFixture>
     {
-        public AnalyticsControllerTest(AnalyticsControllerFixture fixture)
+        public AnalyticsControllerTest(AnalyticsFixture fixture)
         {
             _fixture = fixture;
             _analyticsController = new AnalyticsController(fixture.AnalyticsRepository, fixture.PanelRepository);
         }
 
-        private readonly AnalyticsControllerFixture _fixture;
+        private readonly AnalyticsFixture _fixture;
         private readonly AnalyticsController _analyticsController;
 
         [Fact]

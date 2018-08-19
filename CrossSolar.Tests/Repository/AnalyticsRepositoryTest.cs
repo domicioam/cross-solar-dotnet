@@ -1,6 +1,6 @@
 ﻿using CrossSolar.Domain;
 using CrossSolar.Repository;
-using CrossSolar.Tests.Controller.Fixture;
+using CrossSolar.Tests.Fixture;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using System;
@@ -12,14 +12,14 @@ using Xunit;
 
 namespace CrossSolar.Tests.Repository
 {
-    public class AnalyticsRepositoryTest : IClassFixture<AnalyticsControllerFixture>
+    public class AnalyticsRepositoryTest : IClassFixture<AnalyticsFixture>
     {
-        public AnalyticsRepositoryTest(AnalyticsControllerFixture fixture)
+        public AnalyticsRepositoryTest(AnalyticsFixture fixture)
         {
             _fixture = fixture;
         }
 
-        private AnalyticsControllerFixture _fixture;
+        private AnalyticsFixture _fixture;
 
         [Fact]
         public async void GetDayAnalyticsAsync_ShouldReturnOnlyDayData()

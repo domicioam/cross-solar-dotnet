@@ -8,15 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CrossSolar.Tests.Controller.Fixture
+namespace CrossSolar.Tests.Fixture
 {
-    public class AnalyticsControllerFixture
+    public class AnalyticsFixture
     {
         public IPanelRepository PanelRepository { get; }
         public IAnalyticsRepository AnalyticsRepository { get; }
         public Panel Panel { get; set; }
 
-        public AnalyticsControllerFixture()
+        public AnalyticsFixture()
         {
             string panelId = "1";
             Panel panel = new Panel()
