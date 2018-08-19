@@ -70,7 +70,7 @@ namespace CrossSolar.Controllers
                 DateTime = DateTime.UtcNow
             };
 
-            await _analyticsRepository.InsertAsync(oneHourElectricityContent); 
+            await _analyticsRepository.InsertAsync(oneHourElectricityContent);
 
             //check this
 

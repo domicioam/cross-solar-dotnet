@@ -12,35 +12,16 @@ namespace CrossSolar.Tests.Repository
 {
     public class PanelRepositoryTest
     {
-      public PanelRepositoryTest()
-      {
-
-
-
-            //mockSet.Verify(m => m.Add(It.IsAny<Blog>()), Times.Once());
-            //mockContext.Verify(m => m.SaveChanges(), Times.Once());
-
-
-
-
-
-
-      }
-
-      private readonly Mock<IPanelRepository> _panelRepositoryMock = new Mock<IPanelRepository>();
-      //private readonly IPanelRepository _panelRepository;
-
-
-      [Fact]
-      public async void InsertAsync_ShouldInsertPanel()
-      {
-         Panel panel = new Panel()
-         {
-            Brand = "Areva",
-            Latitude = 12.345678,
-            Longitude = 98.7655432,
-            Serial = "AAAA1111BBBB2222"
-         };
+        [Fact]
+        public async void InsertAsync_ShouldInsertPanel()
+        {
+            Panel panel = new Panel()
+            {
+                Brand = "Areva",
+                Latitude = 12.345678,
+                Longitude = 98.7655432,
+                Serial = "AAAA1111BBBB2222"
+            };
 
             var mockSet = new Mock<DbSet<Panel>>();
 
@@ -57,5 +38,5 @@ namespace CrossSolar.Tests.Repository
             mockContext.Verify(m => m.SaveChanges(), Times.Once());
             Assert.NotNull(insertedPanel);
         }
-   }
+    }
 }

@@ -10,25 +10,25 @@ namespace CrossSolar.Tests.Controller.Fixture
 {
     public class AnalyticsControllerFixture
     {
-      public IPanelRepository PanelRepository { get; }
-      public IAnalyticsRepository AnalyticsRepository { get; }
-      public Panel Panel { get; set; }
+        public IPanelRepository PanelRepository { get; }
+        public IAnalyticsRepository AnalyticsRepository { get; }
+        public Panel Panel { get; set; }
 
-      public AnalyticsControllerFixture()
-      {
-         PanelRepository = new Mock<IPanelRepository>().Object;
-         AnalyticsRepository = new Mock<IAnalyticsRepository>().Object;
+        public AnalyticsControllerFixture()
+        {
+            PanelRepository = new Mock<IPanelRepository>().Object;
+            AnalyticsRepository = new Mock<IAnalyticsRepository>().Object;
 
-         Panel panel = new Panel()
-         {
-            Brand = "Areva",
-            Latitude = 12.345678,
-            Longitude = 98.7655432,
-            Serial = "AAAA1111BBBB2222"
-         };
+            Panel panel = new Panel()
+            {
+                Brand = "Areva",
+                Latitude = 12.345678,
+                Longitude = 98.7655432,
+                Serial = "AAAA1111BBBB2222"
+            };
 
-         PanelRepository.InsertAsync(panel);
-         Panel = panel;
-      }
-   }
+            PanelRepository.InsertAsync(panel);
+            Panel = panel;
+        }
+    }
 }
