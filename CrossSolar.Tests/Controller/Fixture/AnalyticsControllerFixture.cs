@@ -28,15 +28,35 @@ namespace CrossSolar.Tests.Controller.Fixture
                 Serial = "AAAA1111BBBB2222"
             };
 
+            List<OneHourElectricity> oneHourElectricities = MockOneHourEletricityData(panelId);
+            var dayAnalytics = oneHourElectricities.Where(o => o.DateTime.Date == DateTime.Now.Date);
+
+            //Repositories setup
+            var panelRepositoryMock = new Mock<IPanelRepository>();
+            panelRepositoryMock.Setup(m => m.GetAsync(panelId)).ReturnsAsync(panel).Verifiable();
+
+            var analyticsRepositoryMock = new Mock<IAnalyticsRepository>();
+            analyticsRepositoryMock.Setup(m => m.GetDayAnalyticsAsync(panelId)).ReturnsAsync(dayAnalytics).Verifiable();
+
+            //Fill public properties
+            PanelRepository = panelRepositoryMock.Object;
+            AnalyticsRepository = analyticsRepositoryMock.Object;
+            Panel = panel;
+        }
+
+        private static List<OneHourElectricity> MockOneHourEletricityData(string panelId)
+        {
             List<OneHourElectricity> oneHourElectricities = new List<OneHourElectricity>();
             Random random = new Random();
 
-            for (int day = 1; day <= 10; day++)
+            //Mock data from today to 10 days ago
+            for (int day = 0; day <= 10; day++)
             {
                 for (int hour = 0; hour < 10; hour++)
                 {
                     var oneHourElectricity = new OneHourElectricity
                     {
+                        PanelId = panelId,
                         KiloWatt = random.Next(100, 1000),
                         DateTime = DateTime.Now.AddDays(-day).AddHours(hour)
                     };
@@ -45,17 +65,7 @@ namespace CrossSolar.Tests.Controller.Fixture
                 }
             }
 
-            //Repositories setup
-            var panelRepositoryMock = new Mock<IPanelRepository>();
-            panelRepositoryMock.Setup(m => m.GetAsync(panelId)).ReturnsAsync(panel).Verifiable();
-
-            var analyticsRepositoryMock = new Mock<IAnalyticsRepository>();
-            analyticsRepositoryMock.Setup(m => m.GetDayAnalyticsAsync(panelId)).ReturnsAsync(oneHourElectricities).Verifiable();
-
-            //Fill public properties
-            PanelRepository = panelRepositoryMock.Object;
-            AnalyticsRepository = analyticsRepositoryMock.Object;
-            Panel = panel;
+            return oneHourElectricities;
         }
     }
 }

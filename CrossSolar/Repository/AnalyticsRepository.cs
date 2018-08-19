@@ -15,7 +15,7 @@ namespace CrossSolar.Repository
         {
             var task = Task.Run(() =>
             {
-                return Query().Where(o => o.PanelId == panelId && o.DateTime == DateTime.Now).AsEnumerable();
+                return Query().Where(o => o.PanelId == panelId && o.DateTime.Date == DateTime.Now.Date).AsEnumerable();
             });
 
             return await task;
