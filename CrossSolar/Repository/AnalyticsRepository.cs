@@ -20,5 +20,14 @@ namespace CrossSolar.Repository
 
             return await task;
         }
+
+        public async Task<IEnumerable<OneHourElectricity>> GetPanelAnalyticsAsync(int panelId)
+        {
+            var task = Task.Run(()=> {
+                return Query().Where(x => x.PanelId.Equals(panelId)).AsEnumerable();
+            });
+
+            return await task;
+        }
     }
 }

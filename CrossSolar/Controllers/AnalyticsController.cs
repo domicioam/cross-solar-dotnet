@@ -27,13 +27,11 @@ namespace CrossSolar.Controllers
         [HttpGet("{panelId}/[controller]")]
         public async Task<IActionResult> Get([FromRoute] int panelId)
         {
-            var panel = await _panelRepository.Query()
-                .FirstOrDefaultAsync(x => x.Id.Equals(panelId));
+            var panel = await _panelRepository.GetAsync(panelId);
 
             if (panel == null) return NotFound();
 
-            var analytics = await _analyticsRepository.Query()
-                .Where(x => x.PanelId.Equals(panelId)).ToListAsync();
+            var analytics = await _analyticsRepository.GetPanelAnalyticsAsync(panelId);
 
             var result = new OneHourElectricityListModel
             {
