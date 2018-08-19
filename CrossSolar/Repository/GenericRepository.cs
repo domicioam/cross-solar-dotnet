@@ -20,10 +20,10 @@ namespace CrossSolar.Repository
             return _dbContext.Set<T>().AsQueryable();
         }
 
-        public async Task<int> InsertAsync(T entity)
+        public async Task InsertAsync(T entity)
         {
             _dbContext.Set<T>().Add(entity);
-            return await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
         }
 
         public async Task UpdateAsync(T entity)

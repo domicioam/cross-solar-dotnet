@@ -27,7 +27,7 @@ namespace CrossSolar.Tests.Controller.Fixture
             Serial = "AAAA1111BBBB2222"
          };
 
-         panel.Id = PanelRepository.InsertAsync(panel).Result;
+         PanelRepository.InsertAsync(panel);
          Panel = panel;
       }
    }

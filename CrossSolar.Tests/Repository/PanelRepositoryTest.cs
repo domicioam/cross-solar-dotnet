@@ -30,7 +30,7 @@ namespace CrossSolar.Tests.Repository
             Serial = "AAAA1111BBBB2222"
          };
 
-         panel.Id = await _panelRepository.InsertAsync(panel);
+         await _panelRepository.InsertAsync(panel);
          var insertedPanel = await _panelRepository.GetAsync(panel.Id.ToString());
          Assert.NotNull(insertedPanel);
       }
